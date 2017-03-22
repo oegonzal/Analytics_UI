@@ -1,0 +1,39 @@
+{
+  "name": "network-device-risk",
+  "description": "show the risk score for different devices",
+  "main": "server.js",
+  "authors": [
+    "Harshit",
+    "Chinmayee",
+    "Oscar"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-component-router": "^0.2.1",
+    "jquery": "^3.1.0",
+    "angular-material": "^1.0.9",
+    "components-font-awesome": "^4.6.3",
+    "angular-bootstrap": "^2.0.1",
+    "angular-ui-grid": "^3.2.1",
+    "angular-ui-layout": "^1.4.2",
+    "bootstrap": "^3.3.7",
+    "angular-google-chart": "^0.1.0",
+    "angular-aria": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-ui-router": "^0.3.1"
+  },
+  "devDependencies": {
+    "angular-material-data-table": "^0.10.9"
+  }
+}

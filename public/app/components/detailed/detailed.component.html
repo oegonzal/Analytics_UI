@@ -1,0 +1,69 @@
+<div class="container">
+	<div class="row">
+		<md-toolbar class="md-hue-2" style="width: 100%; position: relative; top: 20px; margin-bottom: 0.5em;">
+		    <div class="md-toolbar-tools">
+		      <h2 style="margin: auto;">
+		        <span>Risk History for {{vm.id}}</span>
+		      </h2>
+		      <span flex></span>
+		    </div>
+		 </md-toolbar>
+
+		<div class="col-md-6">
+			<line-chart></line-chart>
+		</div>
+
+		<div class="col-md-6">
+			<div style="width: 100%; position: relative; top: 20px; margin-bottom: 1.41em; margin-top: 2em; background-color: rgb(40,53,147); height: 45px;"> <span class="table_header">Device to CAMR Mapping</span> </div>
+
+			<div ui-grid="vm.gridOptions" class="myGridForDevice">
+				<div class="no-rows" ng-show="!vm.gridOptions.data.length">
+			      <div class="msg">
+			        <span id="CAMR_msg">Loading data...</span>
+			      </div>
+			    </div>
+			</div>
+
+			<div style="width: 100%; position: relative; top: 20px; margin-bottom: 1.41em; margin-top: 0em; background-color: rgb(40,53,147); height: 45px;"> <span class="table_header">Detailed Viper Data</span> </div>
+
+			<div ui-grid="vm.gridOptions2" ng-style="vm.myStyle" class="myGridForViper">
+				<div class="no-rows" ng-show="!vm.gridOptions2.data.length">
+			      <div class="msg">
+			        <span id="viper_detailed_msg">Loading data...</span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div style="height: 30px; width: 100%"></div>
+				<div id="applications" ng-show="vm.show_applications" class="applications_tabs slide">
+					<md-content>
+					    <md-tabs class="md-accent" md-dynamic-height md-border-bottom>
+					    	<md-tab ng-repeat="(key, value) in vm.tier_tables track by $index" label="{{key}}">
+						        <md-content class="md-padding">
+						          	<div ui-grid="value" ng-style="vm.myStylee" class="myGridForApplications">
+										<div class="no-rows" ng-show="!value.data.length">
+									      <div class="msg">
+									        <span id="tier_table_{{$index}}">Loading data...</span>
+									      </div>
+									    </div>
+									</div>
+						        </md-content>
+						     </md-tab>
+					    </md-tabs>
+					</md-content>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<md-button class="md-raised" style="margin-left: 0em; margin-top:2em;" ng-link="['Basic', {id: vm.id}]">Previous Page</md-button>
+
+				<md-button class="md-raised" style="margin-left: 1.5em; margin-top:2em;" ng-click="vm.getApplications()">Show Applications</md-button>				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+
+	<div class="row">
+		<md-toolbar class="md-hue-2" style="width: 100%; position: relative; top: 20px; margin-bottom: 2em;">
+		    <div class="md-toolbar-tools">
+		      <h2 style="margin: auto;">
+		        <span>Risk Detail for {{vm.id}} (Infrastructure)</span>
+		      </h2>
+		      <span flex></span>
+		    </div>
+		</md-toolbar>
+
+		<div class="col-md-6">
+			<threshold-chart></threshold-chart>
+		</div>
+
+		<div class="col-md-6">
+
+			<div style="width: 100%; position: relative; top: 20px; margin-bottom: 1em; margin-top: 3.6em; background-color: rgb(40,53,147); height: 45px;"> <span class="table_header">Score</span> </div>
+			<md-list>
+			
+			  <md-subheader style="color:rgba(0,0,0,0.84);" class="md-no-sticky"><span>1) Volatility - {{vm.volatility}} <span ng-if="!vm.volatility"> loading... </span> </span></md-subheader>
+			  <md-subheader style="color:rgba(0,0,0,0.84);" class="md-no-sticky"><span>2) Criticality - {{vm.criticality}} <span ng-if="!vm.criticality"> loading... </span> </span> </span></md-subheader>
+			</md-list>
+
+			<div style="width: 100%; position: relative; top: 20px; margin-bottom: 1.41em; margin-top: 0.5em; background-color: rgb(40,53,147); height: 45px;"> <span class="table_header">Viper Data</span> </div>
+			
+			<div ui-grid="vm.gridOptions" class="myGridForDevice">
+				<div class="no-rows" ng-show="!vm.gridOptions.data.length">
+			      <div class="msg">
+			        <span>Loading data...</span>
+			      </div>
+			    </div>
+			</div>
+			
+			<md-button class="md-raised" style="margin-top: 50px; margin-left: 0px;" ng-link="['Detailed', {id: vm.id}]">More Details</md-button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+
+
+<div class="container" ng-class="{'dim_out': vm.disable}">
+
+  <div class="applications_tabs" style="width: 100%; min-height: 1px; position: relative; right: 2%; top: 20px; margin-bottom: 2em;">
+    <md-content style="overflow: initial;">
+        <md-tabs class="md-accent" md-dynamic-height md-border-bottom>
+          <md-tab label="Search CRQ">
+
+              <div style="height: 10px; min-width: 1px; clear: both;"></div>
+              <md-content class="md-padding" style="background-color: white">
+
+                <div class="col-md-6" style="padding-left: 0px;">
+                  <md-input-container  style="margin-top:0px;">
+                      <label>Enter CRQ Number</label>
+                      <input ng-model="vm.CRQnumber" type="text">
+                  </md-input-container>
+                  <md-button ng-disabled="vm.disable" style="margin-left: 20px; position: relative; bottom: 25px;" ng-click="vm.findCRQ(vm.CRQnumber)" class="md-raised">Search</md-button>
+                </div>
+                
+              </md-content>
+          </md-tab>
+          <md-tab label="Search Device Type">
+              <div style="height: 10px; min-width: 1px; clear: both;"></div>
+              <md-content class="md-padding" style="background-color: white">
+                  <div class="col-md-6" style="padding-left: 0px;">
+                    <md-input-container style="margin-top: 8px;" class="md-block">
+                      <label>Device Type</label>
+                      <md-select name="type" ng-model="vm.device_type" required>
+                        <md-option value="RT/ST">Router/Switches</md-option>
+                        <md-option value="FW/FX"> Firewall </md-option>
+                        <md-option value="LB">Loadbalancer</md-option>
+                      </md-select>
+                    </md-input-container>
+                  </div>
+
+                  <div class="col-md-6" style="padding-left: 0px;">
+                    <md-input-container style="margin-top: 8px;" class="md-block">
+                      <label>Infrastructure Type</label>
+                      <md-select name="type" ng-model="vm.infra" required>
+                        <md-option value="CM">Commercial Data Center</md-option>
+                        <md-option value="BB">Backbone Network</md-option>
+                        <md-option value="EX">Extranet</md-option>
+                        <md-option value="CR">Corporate Network</md-option>
+                        <md-option value="VM">Visa Management</md-option>
+                        <md-option value="NP">Non-Production</md-option>
+                        <md-option value="CN">Converged Network</md-option>
+                        <md-option value="RT">Real-Time</md-option>
+                        <md-option value="OT">Others</md-option>
+                      </md-select>  
+                    </md-input-container>
+                  </div>
+                  <div class="col-md-6" style="padding-left: 0px; clear: both;">
+                    <md-button ng-disabled="vm.disable" style="margin-left: 0px; margin-top: 1.5em; display:block" class="md-raised" ng-click="vm.findDevices()">Search</md-button>
+                  </div>
+              </md-content>
+          </md-tab>
+        </md-tabs>
+    </md-content>
+  </div>
+
+  <div class="row">
+
+  	<div ng-if="vm.show_table" ng-class="['list_data_section']">
+  		<h4 style="font-weight: bold;"> Device List</h4>
+      <br>
+      
+      <div ng-if="vm.table_size" ng-style="vm.myStyle" ui-grid="vm.gridOptions"></div>
+  	</div>
+    <div id="empty_table"></div>
+
+  </div>
+</div>
+
+<md-progress-circular ng-disabled="!vm.disable" md-mode="determinate" value="{{vm.determinateValue}}" style="position: absolute; left: 50%; top: 30%;"></md-progress-circular>

@@ -1,0 +1,21 @@
+{
+  "name": "network-device-risk",
+  "version": "1.0.0",
+  "description": "show the risk score for different devices",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cassandra-driver": "^3.1.1",
+    "express": "^4.13.4",
+    "hashmap": "^2.0.5",
+    "mssql": "^3.3.0",
+    "node-schedule": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Harshit",
+  "license": "ISC"
+}
